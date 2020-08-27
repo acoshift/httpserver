@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/acoshift/webstatic"
+	"github.com/moonrhythm/webstatic/v4"
 )
 
 var (
@@ -15,8 +15,7 @@ var (
 func main() {
 	flag.Parse()
 
-	h := webstatic.NewDir(".")
-	h = logger(h)
+	h := logger(webstatic.Dir("."))
 
 	log.Println("Start http server on", *addr)
 	err := http.ListenAndServe(*addr, h)
